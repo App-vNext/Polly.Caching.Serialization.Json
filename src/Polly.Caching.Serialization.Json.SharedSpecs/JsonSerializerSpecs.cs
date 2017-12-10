@@ -52,6 +52,23 @@ namespace Polly.Specs.Caching.Serialization.Json
             serialized.Should().Be("{\"StringProperty\":\"\\u003chtml\\u003e\\u003c/html\\u003e\",\"IntProperty\":1}");
         }
 
+        [Fact]
+        public void Should_serialize_default_value_to_null()
+        {
+            Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                StringEscapeHandling = Newtonsoft.Json.StringEscapeHandling.EscapeHtml
+            };
+
+            JsonSerializer<SampleClass> serializer = new JsonSerializer<SampleClass>(settings);
+
+            SampleClass objectToSerialize = default(SampleClass);
+
+            string serialized = serializer.Serialize(objectToSerialize);
+
+            serialized.Should().BeNull();
+        }
+
         #endregion
 
         #region Deserialize
@@ -75,6 +92,40 @@ namespace Polly.Specs.Caching.Serialization.Json
                 IntProperty = 1,
                 StringProperty = "<html></html>"
             });
+        }
+
+        [Fact]
+        public void Should_deserialize_null_to_default_value()
+        {
+            Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                StringEscapeHandling = Newtonsoft.Json.StringEscapeHandling.EscapeHtml
+            };
+
+            JsonSerializer<SampleClass> serializer = new JsonSerializer<SampleClass>(settings);
+
+            string serialized = null;
+
+            SampleClass deserialized = serializer.Deserialize(serialized);
+
+            deserialized.Should().BeNull();
+        }
+
+        [Fact]
+        public void Should_deserialize_empty_to_default_value()
+        {
+            Newtonsoft.Json.JsonSerializerSettings settings = new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                StringEscapeHandling = Newtonsoft.Json.StringEscapeHandling.EscapeHtml
+            };
+
+            JsonSerializer<SampleClass> serializer = new JsonSerializer<SampleClass>(settings);
+
+            string serialized = String.Empty;
+
+            SampleClass deserialized = serializer.Deserialize(serialized);
+
+            deserialized.Should().BeNull();
         }
 
         #endregion
