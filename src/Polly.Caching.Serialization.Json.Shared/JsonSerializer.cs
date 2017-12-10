@@ -9,12 +9,12 @@ namespace Polly.Caching.Serialization.Json
     /// <typeparam name="TResult"/>
     public class JsonSerializer<TResult> : ICacheItemSerializer<TResult, string>
     {
-        private readonly Newtonsoft.Json.JsonSerializerSettings _serializerSettings;
+        private readonly JsonSerializerSettings _serializerSettings;
 
         /// <summary>
         /// Constructs a new <see cref="JsonSerializer{TResult}"/> using the given <see cref="Newtonsoft.Json.JsonSerializerSettings"/>.
         /// </summary>
-        /// <param name="serializerSettings">The <see cref="Newtonsoft.Json.JsonSerializerSettings"/> to use for serialization and deserialization.</param>
+        /// <param name="serializerSettings">The <see cref="JsonSerializerSettings"/> to use for serialization and deserialization.</param>
         public JsonSerializer(Newtonsoft.Json.JsonSerializerSettings serializerSettings)
         {
             _serializerSettings = serializerSettings ?? throw new ArgumentNullException(nameof(serializerSettings));
