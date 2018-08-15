@@ -44,9 +44,7 @@ var nupkgDestDir = artifactsDir + Directory("nuget-package");
 var snkFile = srcDir + File(keyName);
 
 var projectToNugetFolderMap = new Dictionary<string, string[]>() {
-    { "Net45"        , new [] {"net45"} },
     { "NetStandard11", new [] {"netstandard1.1"} },
-    { "Net40Async"   , new [] {"net40"} },
 };
 
 // Gitversion
@@ -169,15 +167,6 @@ Task("__BuildSolutions")
     }
 });
 
-Task("__RunTests")
-    .Does(() =>
-{
-    XUnit2("./src/**/bin/" + configuration + "/**/*.Net4*.Specs.dll", new XUnit2Settings {
-        OutputDirectory = testResultsDir,
-        XmlReportV1 = true
-    });
-});
-
 Task("__RunDotnetTests")
     .Does(() =>
 {
@@ -268,7 +257,6 @@ Task("Build")
     .IsDependentOn("__UpdateDotNetStandardAssemblyVersionNumber")
     .IsDependentOn("__UpdateAppVeyorBuildNumber")
     .IsDependentOn("__BuildSolutions")
-    .IsDependentOn("__RunTests")
     .IsDependentOn("__RunDotnetTests")
     .IsDependentOn("__CopyOutputToNugetFolder")
     .IsDependentOn("__CreateNugetPackage")
