@@ -1,4 +1,4 @@
-///////////////////////////////////////////////////////////////////////////////
+﻿///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -63,14 +63,12 @@ var strongNameSignerPath = ToolsExePath("StrongNameSigner.Console.exe");
 
 Setup(_ =>
 {
-    Information("");
-    Information(" ██████╗  ██████╗ ██╗     ██╗  ██╗   ██╗");
-    Information(" ██╔══██╗██╔═══██╗██║     ██║  ╚██╗ ██╔╝");
-    Information(" ██████╔╝██║   ██║██║     ██║   ╚████╔╝ ");
-    Information(" ██╔═══╝ ██║   ██║██║     ██║    ╚██╔╝  ");
-    Information(" ██║     ╚██████╔╝███████╗███████╗██║   ");
-    Information(" ╚═╝      ╚═════╝ ╚══════╝╚══════╝╚═╝   ");
-    Information("");
+    Information(@"");
+    Information(@" ____   __   __    __    _  _   ___   __    ___  _  _  __  __ _   ___     ____  ____  ____  __   __   __    __  ____   __  ____  __  __   __ _       __  ____   __   __ _ ");
+    Information(@"(  _ \ /  \ (  )  (  )  ( \/ ) / __) / _\  / __)/ )( \(  )(  ( \ / __)   / ___)(  __)(  _ \(  ) / _\ (  )  (  )(__  ) / _\(_  _)(  )/  \ (  ( \    _(  )/ ___) /  \ (  ( \");
+    Information(@" ) __/(  O )/ (_/\/ (_/\ )  /_( (__ /    \( (__ ) __ ( )( /    /( (_ \ _ \___ \ ) _)  )   / )( /    \/ (_/\ )(  / _/ /    \ )(   )((  O )/    / _ / \) \\___ \(  O )/    /");
+    Information(@"(__)   \__/ \____/\____/(__/(_)\___)\_/\_/ \___)\_)(_/(__)\_)__) \___/(_)(____/(____)(__\_)(__)\_/\_/\____/(__)(____)\_/\_/(__) (__)\__/ \_)__)(_)\____/(____/ \__/ \_)__)");
+    Information(@"");
 });
 
 Teardown(_ =>
@@ -85,12 +83,16 @@ Teardown(_ =>
 Task("__Clean")
     .Does(() =>
 {
-    CleanDirectories(new DirectoryPath[] {
+    DirectoryPath[] cleanDirectories = new DirectoryPath[] {
         buildDir,
-        artifactsDir,
         testResultsDir,
-        nupkgDestDir
-  	});
+        nupkgDestDir,
+        artifactsDir
+  	};
+
+    CleanDirectories(cleanDirectories);
+
+    foreach(var path in cleanDirectories) { EnsureDirectoryExists(path); }
 
     foreach(var path in solutionPaths)
     {
