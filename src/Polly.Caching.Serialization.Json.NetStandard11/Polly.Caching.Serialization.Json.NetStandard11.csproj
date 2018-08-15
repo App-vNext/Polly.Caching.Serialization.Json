@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>Polly.Caching.Serialization.Json</AssemblyName>
-    <AssemblyOriginatorKeyFile>..\Polly.Caching.Serialization.Json.Net45\Polly.Caching.Serialization.Json.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Polly.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <DefaultLanguage>en-US</DefaultLanguage>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
