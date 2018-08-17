@@ -7,4 +7,4 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyFileVersion("2.0.0.0")]
 [assembly: AssemblyInformationalVersion("2.0.0.0")]
 
-[assembly: InternalsVisibleTo("Polly.Caching.Serialization.Json.NetStandard11.Specs")]
+[assembly: InternalsVisibleTo("Polly.Caching.Serialization.Json.NetStandard20.Specs")]

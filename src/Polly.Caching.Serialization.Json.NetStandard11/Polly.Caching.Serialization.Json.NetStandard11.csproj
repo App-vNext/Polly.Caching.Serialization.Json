@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>Polly.Caching.Serialization.Json</AssemblyName>
-    <AssemblyOriginatorKeyFile>..\Polly.Caching.Serialization.Json.Net45\Polly.Caching.Serialization.Json.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Polly.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;PORTABLE</DefineConstants>
     <DefaultLanguage>en-US</DefaultLanguage>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -28,8 +28,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="Polly" Version="5.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Polly" Version="6.0.1" />
   </ItemGroup>
   <Import Project="..\Polly.Caching.Serialization.Json.Shared\Polly.Caching.Serialization.Json.Shared.projitems" Label="Shared" />
 </Project>
