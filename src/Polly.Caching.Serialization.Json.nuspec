@@ -13,9 +13,11 @@
     <tags>Polly Cache Caching Cache-aside serialization Json</tags>
     <copyright>Copyright © 2018, App vNext</copyright>
     <releaseNotes>
-     0.1-alpha
+     2.0.0 (first nuget release)
      ---------------------
-     - Stub repo for Polly.Caching.Serialization.Json with first build script
+     - Supports NetStandard1.1 and NetStandard2.0
+     - Requires Polly &gt;= v6.0.1
+     - References latest Newtonsoft.Json at time of publication (v11.0.2)
 
    </releaseNotes>
     <dependencies>
