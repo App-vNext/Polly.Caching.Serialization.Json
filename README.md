@@ -35,7 +35,7 @@ Polly.Caching.Serialization.Json requires:
 These notes demonstrate how to use the [`Polly.Caching.Serialization.Json`](https://www.nuget.org/packages/polly.caching.serialization.json) serialization plugin in combination with the [`Polly.Caching.IDistributedCache`](https://www.nuget.org/packages/polly.caching.idistributedcache) cache provider plugin, such that you could effectively cache any type from a Polly [Cache policy](https://github.com/App-vNext/Polly/wiki/Cache) to Redis using Microsoft's [Redis implementation](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed) of [`IDistributedCache`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache).
 
 
-Assuming you have an instance `IDistributedCache distributedCache` in hand (perhaps just configured and instantiated, perhaps provided to local code by Dependency Injection):
+For some `IDistributedCache distributedCache` instance (perhaps just configured and instantiated, perhaps provided to local code by Dependency Injection):
 
 ```csharp
 // Create a Newtonsoft.Json.JsonSerializerSettings defining any settings to use for serialization
