@@ -32,7 +32,7 @@ Polly.Caching.Serialization.Json requires:
 
 # How to use the Polly.Caching.Serialization.Json plugin
 
-These notes demonstrate how to use the [`Polly.Caching.Serialization.Json`](https://www.nuget.org/packages/polly.caching.serialization.json) serialization plugin in combination with the [`Polly.Caching.IDistributedCache`](https://www.nuget.org/packages/polly.caching.idistributedcache) cache provider plugin, such that you could effectively cache any type from a Polly [Cache policy](https://github.com/App-vNext/Polly/wiki/Cache) to Redis using Microsoft's [Redis implementation](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed) of [`IDistributedCache`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache).
+The below example demonstrates how to configure the [`Polly.Caching.Serialization.Json`](https://www.nuget.org/packages/polly.caching.serialization.json) serialization plugin in combination with the [`Polly.Caching.IDistributedCache`](https://www.nuget.org/packages/polly.caching.idistributedcache) cache provider plugin, such that you could effectively cache any type from a Polly [Cache policy](https://github.com/App-vNext/Polly/wiki/Cache) to Redis using Microsoft's [Redis implementation](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed) of [`IDistributedCache`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache).
 
 
 For some `IDistributedCache distributedCache` instance (perhaps just configured and instantiated, perhaps provided to local code by Dependency Injection):
@@ -56,7 +56,30 @@ var productDetailsCachePolicy = Policy.CacheAsync<ProductDetails>(
     );
 ```
 
-Usage:
+You may also use Polly.Caching.Serialization.Json with any other `Polly.Caching.ISyncCacheProvider` or `Polly.Caching.IAsyncCacheProvider`.  For example, if you wish (for whatever reason) to serialize to JSON when caching with [Polly.Caching.Memory](https://github.com/App-vNext/Polly.Caching.MemoryCache), then, given some `Polly.Caching.Memory.MemoryCacheProvider memoryCacheProvider` instance:
+
+```csharp
+// Create a Newtonsoft.Json.JsonSerializerSettings defining any settings to use for serialization
+var serializerSettings = new JsonSerializerSettings()
+{
+    // Any configuration options
+};
+
+// Create a Polly cache policy for caching ProductDetails entities, using that IDistributedCache instance.
+var productDetailsCachePolicy = Policy.CacheAsync<ProductDetails>(
+    memoryCacheProvider.AsyncFor<string>().WithSerializer<ProductDetails, string>(
+        new Polly.Caching.Serialization.Json.JsonSerializer<ProductDetails>(serializerSettings)
+    ), 
+    TimeSpan.FromMinutes(5) // for example
+    /* for deeper CachePolicy configuration options: 
+    -- see https://github.com/App-vNext/Polly/wiki/Cache#syntax
+    -- and https://github.com/App-vNext/Polly.Caching.IDistributedCache */    
+    );
+```
+
+The configuration above is all that is necessary to configure JSON serialization as part of caching.  Values will be serialized using the supplied `JsonSerializerSettings` before being put to cache.  When values are retrieved from cache, they will be deserialized by the same `JsonSerializerSettings` before being returned by the policy.
+
+Usage of the CachePolicy at call site is unchanged from when a serializer was not in the mix:
 
 ```csharp
 string productId = // ... from somewhere
