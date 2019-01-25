@@ -1,5 +1,9 @@
 # Polly.Caching.Serialization.Json change log
 
+## 3.0.0
+- Allow serialization of default(TResult) for caching
+- Compatible with Polly &gt;= v7
+
 ## 2.0.1
 - No functional changes
 - Indicate compatibility with Polly &gt;= v6.0.1 and &lt; v7
