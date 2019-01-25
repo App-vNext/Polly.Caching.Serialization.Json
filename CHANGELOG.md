@@ -1,5 +1,9 @@
 # Polly.Caching.Serialization.Json change log
 
+## 2.0.1
+- No functional changes
+- Indicate compatibility with Polly &gt;= v6.0.1 and &lt; v7
+
 ## 2.0.0
 
 - Reference Polly v6.0.1

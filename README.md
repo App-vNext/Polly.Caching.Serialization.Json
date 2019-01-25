@@ -23,11 +23,11 @@ Polly is a member of the [.NET Foundation](https://www.dotnetfoundation.org/abou
 
 Polly.Caching.Serialization.Json supports .NET Standard 1.1 and .NET Standard 2.0.
 
-## Dependencies
+## Versions and Dependencies
 
-Polly.Caching.Serialization.Json requires:
+Polly.Caching.Serialization.Json &gt;=v2.0 and &lt;v3 requires:
 
-+ [Polly](https://github.com/App-vNext/Polly) v6.0.1 or above
++ [Polly](https://nuget.org/packages/polly) >= v6.0.1 and &lt;v7.
 + [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) v11.0.2 or above
 
 # How to use the Polly.Caching.Serialization.Json plugin

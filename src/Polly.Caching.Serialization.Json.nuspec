@@ -13,6 +13,11 @@
     <tags>Polly Cache Caching Cache-aside serialization Json</tags>
     <copyright>Copyright © 2019, App vNext</copyright>
     <releaseNotes>
+     2.0.1
+     ---------------------
+     - No functional changes
+     - Indicate compatibility with Polly &gt;= v6.0.1 and &lt; v7
+
      2.0.0 (first nuget release)
      ---------------------
      - Supports NetStandard1.1 and NetStandard2.0
@@ -24,11 +29,11 @@
       <group targetFramework="netstandard1.1">
         <dependency id="NETStandard.Library" version="1.6.1" />
         <dependency id="Newtonsoft.Json" version="11.0.2" />
-        <dependency id="Polly" version="6.0.1" />
+        <dependency id="Polly" version="[6.0.1,7)" />
       </group>
       <group targetFramework="netstandard2.0">
         <dependency id="Newtonsoft.Json" version="11.0.2" />
-        <dependency id="Polly" version="6.0.1" />
+        <dependency id="Polly" version="[6.0.1,7)" />
       </group>
     </dependencies>
   </metadata>
