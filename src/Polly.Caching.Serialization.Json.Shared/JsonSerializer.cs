@@ -27,7 +27,7 @@ namespace Polly.Caching.Serialization.Json
         /// <returns>The deserialized object</returns>
         public TResult Deserialize(string objectToDeserialize)
         {
-            return String.IsNullOrEmpty(objectToDeserialize) ? default(TResult) : JsonConvert.DeserializeObject<TResult>(objectToDeserialize, _serializerSettings);
+            return JsonConvert.DeserializeObject<TResult>(objectToDeserialize, _serializerSettings);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Polly.Caching.Serialization.Json
         /// <returns>The serialized object</returns>
         public string Serialize(TResult objectToSerialize)
         {
-            return objectToSerialize == null || objectToSerialize.Equals(default(TResult)) ? null : JsonConvert.SerializeObject(objectToSerialize, _serializerSettings);
+            return JsonConvert.SerializeObject(objectToSerialize, _serializerSettings);
         }
     }
 }
