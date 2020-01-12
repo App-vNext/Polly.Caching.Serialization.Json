@@ -2,6 +2,8 @@
 
 This repo contains a Json plugin for the [Polly](https://github.com/App-vNext/Polly) [Cache policy](https://github.com/App-vNext/Polly/wiki/Cache) using [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/).  It targets .NET Standard 1.1 and .NET Standard 2.0.
 
+**If you want to serialize using [System.Text.Json](https://docs.microsoft.com/en-us/dotnet/api/system.text.json?view=netcore-3.1), use the [Polly.Caching.Serialization.System.Text.Json](https://github.com/App-vNext/Polly.Caching.Serialization.System.Text.Json) library.**
+
 [![NuGet version](https://badge.fury.io/nu/Polly.Caching.Serialization.Json.svg)](https://badge.fury.io/nu/Polly.Caching.Serialization.Json) [![Build status](https://ci.appveyor.com/api/projects/status/pgd89nfdr9u4ig8m?svg=true)](https://ci.appveyor.com/project/joelhulen/polly-caching-serialization-json) [![Slack Status](http://www.pollytalk.org/badge.svg)](http://www.pollytalk.org)
 
 ## What is Polly?
